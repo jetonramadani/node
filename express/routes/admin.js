@@ -7,17 +7,19 @@ const rootDir = require("../util/path");
 const router = express.Router();
 
 router.get("/add-product", (req, res, next) => {
-    res.sendFile(path.join(rootDir, "views", "add-product.html"));
+    // res.sendFile(path.join(rootDir, "views", "add-product.html"));
+
+    res.render('add-product', { docTitle: "Add products", path: '/admin/add-product' });
 })
 
 const products = [];
 
 router.post("/add-product", (req, res, next) => {
-    // console.log(req.body);
-    console.log(products)
+
     products.push({
         title: req.body.title
     });
+
     res.redirect('/');
 })
 
